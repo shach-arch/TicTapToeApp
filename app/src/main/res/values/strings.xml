@@ -21,4 +21,8 @@
         <item>5 x 5</item>
     </string-array>
 
+    <!--Grid3x3_display-->
+    <string name="playAgainBtn">Play Again?</string>
+    <string name="homeBtn">Go Home</string>
+
 </resources>

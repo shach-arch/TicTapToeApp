@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.tictactoeapp.GUI.PlayerChoiceActivity;
+import com.example.tictactoeapp.GUI.PlayerSetUp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,8 +17,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void playButtonClick(View view) {
-        Intent intent = new Intent(this, PlayerChoiceActivity.class);
+        Intent intent = new Intent(this, PlayerSetUp.class);
         startActivity(intent);
-
     }
 }
