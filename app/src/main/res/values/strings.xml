@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">TicTacToeApp</string>
+
+    <!--start_activity_main-->
+    <string name="homeTitle">Tic Tac Toe</string>
+    <string name="homeButtonTitle">Play</string>
+
+    <!--Settings_menu-->
+    <string name="action_settings">Settings</string>
+
+    <!--Activity_player_choice-->
+    <string name="title_label">Enter Your Names</string>
+    <string name="label1">Player 1</string>
+    <string name="label2">Player 2</string>
+    <string name="label3">Choose Board</string>
+    <string name="btn_label4">Start</string>
+    <string name="nameHint">Enter Your Name</string>
+    <string-array name="grid_array">
+        <item>3 x 3</item>
+        <item>4 x 4</item>
+        <item>5 x 5</item>
+    </string-array>
+
+</resources>
