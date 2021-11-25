@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="-1"
+        android:entries="@array/grid_array"
+        android:entryValues="@array/grid_array_values"
+        android:key="sex_list"
+        android:negativeButtonText="@null"
+        android:positiveButtonText="@null"
+        android:title="Grid Type" />
+
+</PreferenceScreen>

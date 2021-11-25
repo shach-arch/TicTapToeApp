@@ -8,15 +8,23 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.tictactoeapp.Dialog.NumberPickerDialog;
 import com.example.tictactoeapp.R;
+import com.example.tictactoeapp.Boards.TicTacToeBoard;
 
-public class PlayerSetUp extends AppCompatActivity {
+import butterknife.Bind;
+
+public class PlayerSetUp extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
+    @Bind(R.id.ticTacToeBoard_3)   TicTacToeBoard gridBoard;
     EditText player1;
     EditText player2;
     String gameBoard;
+    int gridType;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +52,7 @@ public class PlayerSetUp extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parent) {
             }
         });
-
-
-    }
+    }// onCreate
 
     public void startButtonClick(View view){
         String player1Name = player1.getText().toString();
@@ -55,20 +61,38 @@ public class PlayerSetUp extends AppCompatActivity {
         //Opens a different GameBoard-display based on users choice
         switch (gameBoard){
             case "3 x 3":
-                Intent intent = new Intent(this, Grid3x3Display.class);
+                intent = new Intent(this, Grid3x3Display.class);
                 intent.putExtra("PLAYER_NAMES", new String[] {player1Name, player2Name});
+                intent.putExtra("GRID", 3);
                 startActivity(intent);
                 break;
             case "4 x 4":
-                Intent intent4 = new Intent(this, Grid4x4Display.class);
-                intent4.putExtra("PLAYER_NAMES", new String[] {player1Name, player2Name});
-                startActivity(intent4);
+                intent = new Intent(this, Grid4x4Display.class);
+                intent.putExtra("PLAYER_NAMES", new String[] {player1Name, player2Name});
+                startActivity(intent);
                 break;
             case "5 x 5":
-                Intent intent5 = new Intent(this, Grid5x5Display.class);
-                intent5.putExtra("PLAYER_NAMES", new String[] {player1Name, player2Name});
-                startActivity(intent5);
+                intent = new Intent(this, Grid5x5Display.class);
+                intent.putExtra("PLAYER_NAMES", new String[] {player1Name, player2Name});
+                startActivity(intent);
                 break;
         }
     }// startButtonClick
+
+    @Override
+    public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
+        Toast.makeText(this,
+                "selected number " + numberPicker.getValue(), Toast.LENGTH_SHORT).show();
+
+        gridType = newVal;
+        gridBoard.setGridType(gridType);
+    }// onValueChange
+
+    public void showNumberPicker(){
+        NumberPickerDialog newFragment = new NumberPickerDialog();
+        newFragment.setValueChangeListener(this);
+        newFragment.show(getFragmentManager(), "time picker");
+    }// showNumberPicker
+
+
 }

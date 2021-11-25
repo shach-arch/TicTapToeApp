@@ -45,7 +45,7 @@
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:textColor="#01579B"
+            android:textColor="#D50000"
             tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
     </LinearLayout>
@@ -79,7 +79,7 @@
             android:importantForAutofill="no"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:textColor="#01579B"
+            android:textColor="#2962FF"
             tools:ignore="TextContrastCheck" />
     </LinearLayout>
 
@@ -107,6 +107,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="48dp"
+            android:gravity="center"
             tools:ignore="SpeakableTextPresentCheck" />
     </LinearLayout>
 
