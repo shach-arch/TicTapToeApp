@@ -17,7 +17,6 @@ public class TicTacToeBoard extends View {
     private final Paint mDrawPaint = new Paint();
     private int cellSize;
     private int mPaintColor = Color.BLACK;
-    private int gridType = 3;
     private final GameLogic3x3 game = new GameLogic3x3();
     private boolean winLine = false;
 
@@ -34,10 +33,6 @@ public class TicTacToeBoard extends View {
         mDrawPaint.setStrokeWidth(16);
     }
 
-    public void setGridType(int newNum){
-        gridType = newNum;
-    }
-
     // Set Dimensions of Board
     @Override
     protected void onMeasure(int width, int height){
@@ -47,7 +42,7 @@ public class TicTacToeBoard extends View {
         int dimension = Math.min(getMeasuredWidth(), getMeasuredHeight());
         Log.i("Testing: dimension is =", String.valueOf(dimension));
 
-        cellSize = dimension/gridType; // 3 boxes in each row & column
+        cellSize = dimension/3; // 3 boxes in each row & column
         Log.i("Testing: cellsize is = ", String.valueOf(cellSize));
 
         setMeasuredDimension(dimension, dimension); // To draw a Square
@@ -98,10 +93,10 @@ public class TicTacToeBoard extends View {
 
     private void drawGameBoard(Canvas canvas){
         //For loop to Create the board
-        for (int col=1; col<gridType; col++){
+        for (int col=1; col<3; col++){
             canvas.drawLine(cellSize*col, 0, cellSize*col,canvas.getWidth(), mDrawPaint);
         }
-        for (int row=1; row<gridType; row++){
+        for (int row=1; row<3; row++){
             canvas.drawLine(0, cellSize*row, canvas.getWidth(),cellSize*row, mDrawPaint);
         }
     }// drawGameBoard

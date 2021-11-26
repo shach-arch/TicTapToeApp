@@ -79,7 +79,7 @@ public class GameLogic4x4 {
         if (win){
             playAgainBtn.setVisibility(View.VISIBLE);
             homeBtn.setVisibility(View.VISIBLE);
-            playerTurn.setText((name[player-1] + "WON !!!!!!!"));
+            playerTurn.setText((name[player-1] + " WON !!!!!!!"));
             return true;
         }
         else if (boardFilled == 20 ){
