@@ -8,19 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.tictactoeapp.Boards.TicTacToeBoard4x4;
-import com.example.tictactoeapp.Dialog.NumberPickerDialog;
 import com.example.tictactoeapp.R;
-import com.example.tictactoeapp.Boards.TicTacToeBoard;
 
-import butterknife.Bind;
-
-public class PlayerSetUp extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
-    @Bind(R.id.ticTacToeBoard_3)   TicTacToeBoard gridBoard;
+public class PlayerSetUp extends AppCompatActivity {
     EditText player1;
     EditText player2;
     String gameBoard;
@@ -80,21 +73,4 @@ public class PlayerSetUp extends AppCompatActivity implements NumberPicker.OnVal
                 break;
         }
     }// startButtonClick
-
-    @Override
-    public void onValueChange(NumberPicker numberPicker, int oldVal, int newVal) {
-        Toast.makeText(this,
-                "selected number " + numberPicker.getValue(), Toast.LENGTH_SHORT).show();
-
-        gridType = newVal;
-        gridBoard.setGridType(gridType);
-    }// onValueChange
-
-    public void showNumberPicker(){
-        NumberPickerDialog newFragment = new NumberPickerDialog();
-        newFragment.setValueChangeListener(this);
-        newFragment.show(getFragmentManager(), "time picker");
-    }// showNumberPicker
-
-
 }

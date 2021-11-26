@@ -19,16 +19,11 @@ import butterknife.ButterKnife;
 
 public class Grid3x3Display extends AppCompatActivity {
 
-    //boolean activePlayer;
-    //@Bind(R.id.ticTacToeBoard_3) TicTacToeBoard board;
-    //public int grid;
-    //Intent intent;
     private TicTacToeBoard ticTacToeBoard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initDrawingView();
         setContentView(R.layout.grid3x3_display);
 
 
@@ -57,22 +52,15 @@ public class Grid3x3Display extends AppCompatActivity {
                 PreferenceManager.getDefaultSharedPreferences(this);
         String prefVal = sharedPref.getString("sync_frequency", "-1");
         Toast.makeText(this, "sync_frequency: " + prefVal, Toast.LENGTH_SHORT).show();
-
-        ButterKnife.bind(this);
     }
+
     public void playAgainBtnClick(View view){
         ticTacToeBoard.resetGame();
         ticTacToeBoard.invalidate();
-    }
+    }//playAgainBtnClick
 
     public void homeBtnClick(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }// homeBtnClick
-
-    private void initDrawingView() {
-        //Bundle extras = getIntent().getExtras(); // Get Extra Data
-        //grid = Integer.parseInt(String.valueOf(extras.getInt("GRID_TYPE")));
-    }// initDrawingView
-
 }

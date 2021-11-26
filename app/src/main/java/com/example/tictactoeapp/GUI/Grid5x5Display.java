@@ -6,11 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.tictactoeapp.Boards.TicTacToeBoard5x5;
 import com.example.tictactoeapp.MainActivity;
 import com.example.tictactoeapp.R;
 
 public class Grid5x5Display extends AppCompatActivity {
-    public int grid = 5;
+    private TicTacToeBoard5x5 ticTacToeBoard5x5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +20,13 @@ public class Grid5x5Display extends AppCompatActivity {
 
     }
 
+    public void playAgainBtnClick(View view){
+        //ticTacToeBoard5x5.resetGame();
+        //ticTacToeBoard5x5.invalidate();
+    }//playAgainBtnClick
+
     public void homeBtnClick(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
-
-    public int getGrid(){
-        return grid;
-    }// getGrid
+    }// homeBtnClick
 }

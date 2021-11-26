@@ -51,14 +51,14 @@ public class Grid4x4Display extends AppCompatActivity {
 
 
     }
+
     public void playAgainBtnClick(View view){
         ticTacToeBoard4x4.resetGame();
         ticTacToeBoard4x4.invalidate();
-    }
+    }//playAgainBtnClick
 
     public void homeBtnClick(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
-
+    }//homeBtnClick
 }
