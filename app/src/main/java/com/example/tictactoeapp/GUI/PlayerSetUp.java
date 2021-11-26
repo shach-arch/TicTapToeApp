@@ -12,6 +12,7 @@ import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.tictactoeapp.Boards.TicTacToeBoard4x4;
 import com.example.tictactoeapp.Dialog.NumberPickerDialog;
 import com.example.tictactoeapp.R;
 import com.example.tictactoeapp.Boards.TicTacToeBoard;
@@ -69,6 +70,7 @@ public class PlayerSetUp extends AppCompatActivity implements NumberPicker.OnVal
             case "4 x 4":
                 intent = new Intent(this, Grid4x4Display.class);
                 intent.putExtra("PLAYER_NAMES", new String[] {player1Name, player2Name});
+                intent.putExtra("GRID", 4);
                 startActivity(intent);
                 break;
             case "5 x 5":

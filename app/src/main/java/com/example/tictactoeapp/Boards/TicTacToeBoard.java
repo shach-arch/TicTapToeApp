@@ -2,8 +2,8 @@ package com.example.tictactoeapp.Boards;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -13,15 +13,15 @@ import android.widget.Button;
 import android.widget.TextView;
 
 
-public class TicTacToeBoard4x4 extends View {
+public class TicTacToeBoard extends View {
     private final Paint mDrawPaint = new Paint();
     private int cellSize;
     private int mPaintColor = Color.BLACK;
-    private int gridType = 4;
-    private final GameLogic4x4 game = new GameLogic4x4();
+    private int gridType = 3;
+    private final GameLogic3x3 game = new GameLogic3x3();
     private boolean winLine = false;
 
-    public TicTacToeBoard4x4(Context context, AttributeSet attrs) {
+    public TicTacToeBoard(Context context, AttributeSet attrs) {
         super(context, attrs);
         initPaint();
     }
@@ -47,7 +47,7 @@ public class TicTacToeBoard4x4 extends View {
         int dimension = Math.min(getMeasuredWidth(), getMeasuredHeight());
         Log.i("Testing: dimension is =", String.valueOf(dimension));
 
-        cellSize = dimension/4; // 4 boxes in each row & column
+        cellSize = dimension/gridType; // 3 boxes in each row & column
         Log.i("Testing: cellsize is = ", String.valueOf(cellSize));
 
         setMeasuredDimension(dimension, dimension); // To draw a Square
@@ -55,9 +55,12 @@ public class TicTacToeBoard4x4 extends View {
 
     @Override
     protected void onDraw(Canvas canvas){
+
         drawGameBoard(canvas);
         drawMarkers(canvas);
+
     }// onDraw
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event){
@@ -78,7 +81,6 @@ public class TicTacToeBoard4x4 extends View {
                         winLine = true;
                         invalidate();
                     }
-
                     //updating the players turn
                     if (game.getPlayer()% 2 ==0){
                         game.setPlayer(game.getPlayer()-1);
@@ -103,9 +105,10 @@ public class TicTacToeBoard4x4 extends View {
             canvas.drawLine(0, cellSize*row, canvas.getWidth(),cellSize*row, mDrawPaint);
         }
     }// drawGameBoard
+
     private void drawMarkers(Canvas canvas){
-        for (int r=0; r<4; r++){
-            for (int c=0; c<4; c++){
+        for (int r=0; r<3; r++){
+            for (int c=0; c<3; c++){
                 if (game.getGameBoard()[r][c] != 0){
                     if (game.getGameBoard()[r][c] == 1){
                         DrawX(canvas,r,c);
@@ -124,41 +127,40 @@ public class TicTacToeBoard4x4 extends View {
 
         // creates X
         canvas.drawLine((float) ((col+1)*cellSize - cellSize*0.2),
-                (float) (row*cellSize +cellSize*0.2),
-                (float) (col*cellSize +cellSize*0.2),
-                (float) ((row+1)*cellSize -cellSize*0.2),
-                mDrawPaint);
+                        (float) (row*cellSize +cellSize*0.2),
+                        (float) (col*cellSize +cellSize*0.2),
+                        (float) ((row+1)*cellSize -cellSize*0.2),
+                        mDrawPaint);
 
         canvas.drawLine((float) (col*cellSize + cellSize*0.2),
-                (float) (row*cellSize + cellSize*0.2),
-                (float) ((col+1)*cellSize - cellSize*0.2),
-                (float) ((row+1)*cellSize - cellSize*0.2),
-                mDrawPaint);
+                        (float) (row*cellSize + cellSize*0.2),
+                        (float) ((col+1)*cellSize - cellSize*0.2),
+                        (float) ((row+1)*cellSize - cellSize*0.2),
+                        mDrawPaint);
     }
 
     private void DrawO(Canvas canvas, int row , int col){
         mDrawPaint.setColor(Color.BLUE);
 
         canvas.drawOval((float) (col*cellSize + cellSize*0.2),
-                (float) (row*cellSize + cellSize*0.2),
-                (float) ((col*cellSize+ cellSize) -cellSize*0.2),
-                (float) ((row*cellSize +cellSize) -cellSize*0.2),
-                mDrawPaint);
+                        (float) (row*cellSize + cellSize*0.2),
+                        (float) ((col*cellSize+ cellSize) -cellSize*0.2),
+                        (float) ((row*cellSize +cellSize) -cellSize*0.2),
+                        mDrawPaint);
 
     }
     //setup the game
-    public void gameTime(Button playAgain, Button home, TextView playDisplay, String[] name){
+    public void gameTime(Button playAgain,Button home,TextView playDisplay,String[] name){
         game.setPlayAgainBtn(playAgain);
         game.setHomeBtn(home);
         game.setPlayerTurn(playDisplay);
-        game.setName(name);
-
-
+        if (!name[0].equals("") && !name[1].equals("")){
+            game.setName(name);
+        }
     }
 
     public void resetGame(){
         game.resetGame();
         winLine = false;
     }
-
 }

@@ -50,7 +50,9 @@ public class TicTacToeBoard5x5 extends View {
     @Override
     protected void onDraw(Canvas canvas){
         drawGameBoard(canvas);
+
     }// onDraw
+
 
     private void drawGameBoard(Canvas canvas){
         //For loop to Create the board
@@ -61,5 +63,6 @@ public class TicTacToeBoard5x5 extends View {
             canvas.drawLine(0, cellSize*row, canvas.getWidth(),cellSize*row, mDrawPaint);
         }
     }// drawGameBoard
+
 
 }
